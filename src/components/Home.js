@@ -4,16 +4,6 @@ import EditEmployer from './Employer/EditEmployer';
 import Footer from './Footer';
 
 const Home = () => {
-  const displayDelChat = () => {
-    document.getElementById('close-chat').style.display = 'flex'
-  }
-  const showFilters = () => {
-    document.getElementById('filters').style.display = 'flex'
-  }
-
-  const showContact = () => {
-    document.getElementById('contact-info').style.display = 'flex'
-  }
 
   return (
     <div>
