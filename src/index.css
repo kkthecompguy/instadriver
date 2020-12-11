@@ -664,3 +664,107 @@ img {
     padding: .2rem;
   }
 }
+
+
+/* Employer Edit Page */
+
+.cover-image {
+  position: relative;
+}
+
+.business-name {
+
+}
+
+.custom-h6 {
+  color: #575353;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 23.3px;
+}
+
+.faded-color {
+  color: #b0aeae;
+  font-size: 15px;
+  line-height: 21.75px;
+  font-weight: 400;
+}
+
+.text-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.insta-web {
+  background-color: #edf5fa;
+  width: 100%;
+  padding: 8px;
+}
+
+.insta-web input {
+  width: 50%;
+  display: inline !important;
+}
+
+.custombtn {
+  color: #ccc;
+  background: #3b3b3b;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  margin: 18px 0
+}
+
+.business-about textarea {
+  width: 100%;
+  background-color: #edf5fa;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.business-location .location {
+  background-color: #f5f5f5;
+  width: 50%;
+}
+
+#map-box {
+  width: 100%;
+  height: 300px;
+  background: #f5f5f5;
+  margin: 20px 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.business-cat-info > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.business-cat-info input {
+  width: 50%;
+  margin: 10px 0;
+}
+
+.visibility-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 10px;
+}
+
+.visibility-row input {
+  margin-right: 30px;
+  border-radius: 50%;
+}
+
+.visibility-row input:checked {
+  background-color: #ffbb00;
+}
