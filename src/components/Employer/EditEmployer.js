@@ -1,5 +1,5 @@
 import React from 'react';
-import Map from '../../images/map.PNG'
+import MapContainer from '../MapComp/Map';
 
 const EditEmployer = () => {
   return (
@@ -173,17 +173,8 @@ const EditEmployer = () => {
             </p>
             <form>
               <div>
-                <div className="location">
-                  <input
-                    type='text'
-                    name='location'
-                    id='location'
-                    className='form-control'
-                    placeholder='Nairobi Kenya'
-                  />
-                </div>
+                <MapContainer/>
               </div>
-              <div id='map-box' style={{background:`url(${Map})`}}>Map here</div>
               <button type='submit' className='custombtn'>
                 Save Location
               </button>
@@ -233,11 +224,15 @@ const EditEmployer = () => {
             <h6 className="custom-h6">Visibility settings for your contact information</h6>
             <form>
               <div className="visibility-row">
-                <input
-                  type='checkbox'
-                  name='visibility'
-                  id='visibility'
-                />
+                <div className="form-check upper">
+                  <input
+                    type='radio'
+                    name='visibility'
+                    id='radio1'
+                    className="form-check-input"
+                  />
+                  <label htmlFor="radio1"></label>
+                </div>
                 <div>
                   <h6>Make my contact information public</h6>
                   <p className="faded-color">
@@ -248,11 +243,15 @@ const EditEmployer = () => {
                 </div>
               </div>
               <div className="visibility-row">
-                <input
-                  type='checkbox'
-                  name='visibility'
-                  id='visibliy'
-                />
+                <div className="form-check upper">
+                  <input
+                    type='radio'
+                    name='visibility'
+                    id='radio2'
+                    className="form-check-input"
+                  />
+                  <label htmlFor="radio2"></label>
+                </div>
                 <div>
                   <h6>
                     Do NOT make my contact information public instead show “DM
