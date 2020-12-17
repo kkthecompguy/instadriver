@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
-import EditEmployer from './Employer/EditEmployer';
+// import EditEmployer from './Employer/EditEmployer';
+import LivestreamHome from './Livestream/LivestreamHome';
 import Footer from './Footer';
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
     <div>
       <Navbar/ >
       <div className="separator" ></div>
-      <div className="container-fluid">
+      {/* <div className="container-fluid">
         <div className="row">
           <div className="col-sm-12 col-md-4 col-lg-2">
             <div className="sidebar">
@@ -33,7 +34,9 @@ const Home = () => {
             <EditEmployer />
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <LivestreamHome />
       <div className="pad-down"></div>
       <Footer />
     </div>

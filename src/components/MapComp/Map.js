@@ -2,22 +2,20 @@ import React, { useState } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import usePlacesAutocomplete, {
   getGeocode,
-  getLatLng
-} from 'use-places-autocomplete'
+  getLatLng,
+} from 'use-places-autocomplete';
 import {
   Combobox,
   ComboboxInput,
   ComboboxPopover,
   ComboboxList,
-  ComboboxOption
+  ComboboxOption,
 } from '@reach/combobox';
-import "@reach/combobox/styles.css";
-
-
+import '@reach/combobox/styles.css';
 
 const center = {
   lat: -1.292066,
-  lng: 36.821945
+  lng: 36.821945,
 };
 
 const libraries = ['places'];
@@ -27,99 +25,101 @@ const mapContainerStyle = {
   height: '100%',
   borderBottomLeftRadius: '15px',
   borderBottomRightRadius: '15px',
-}
+};
 
 const options = {
-  disableDefaultUI: true
-}
+  disableDefaultUI: true,
+};
 
-
-const MapContainer = () => {
-  const [marker, setMarker] = useState(null)
+const MapContainer = ({ getLocation }) => {
+  const [marker, setMarker] = useState(null);
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY || 'AIzaSyCigKo_qdgK82NOWQNOhUcltn_ELubfD00',
-    libraries: libraries
+    googleMapsApiKey:
+      process.env.REACT_APP_GOOGLE_MAP_API_KEY ||
+      'AIzaSyCigKo_qdgK82NOWQNOhUcltn_ELubfD00',
+    libraries: libraries,
   });
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
-    mapRef.current = map
+    mapRef.current = map;
   }, []);
 
-  const panTo = React.useCallback(({lat, lng}) => {
+  const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(17);
-    setMarker({lat, lng})
-  }, [])
+    setMarker({ lat, lng });
+  }, []);
 
-
-  if (loadError) return "Error loading map";
-  if (!isLoaded) return "Loading Maps...";
+  if (loadError) return 'Error loading map';
+  if (!isLoaded) return 'Loading Maps...';
 
   return (
     <React.Fragment>
-      <Search panTo={panTo} />
+      <Search panTo={panTo} getLocation={getLocation} />
       <div id='map-box'>
         <GoogleMap
-          mapContainerStyle={mapContainerStyle} 
-          zoom={12} 
+          mapContainerStyle={mapContainerStyle}
+          zoom={12}
           center={center}
           options={options}
-           onLoad={onMapLoad}
+          onLoad={onMapLoad}
         >
-          {marker && <Marker position = {{lat: marker.lat, lng: marker.lng}} />}
+          {marker && <Marker position={{ lat: marker.lat, lng: marker.lng }} />}
         </GoogleMap>
       </div>
     </React.Fragment>
   );
-}
+};
 
-
-export const Search = ({ panTo }) => {
+export const Search = ({ panTo, getLocation }) => {
   const {
-     ready, 
-     value, 
-     suggestions: { status, data }, 
-     setValue, 
-     clearSuggestions 
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
-      location: {lat: () => -1.292066, lng: () => 36.821945},
-      radius: 5000
+      location: { lat: () => -1.292066, lng: () => 36.821945 },
+      radius: 5000,
     },
   });
 
-
   return (
-    <Combobox onSelect={async (address) => {
-      setValue(address, false)
-      clearSuggestions()
-      try {
-        const results = await getGeocode({address})
-        const { lat, lng } = await getLatLng(results[0])
-        panTo({lat, lng});
-      } catch (error) {
-        console.log(error);
-      }
-    }}>
+    <Combobox
+      onSelect={async (address) => {
+        setValue(address, false);
+        getLocation(address);
+        clearSuggestions();
+        try {
+          const results = await getGeocode({ address });
+          const { lat, lng } = await getLatLng(results[0]);
+          panTo({ lat, lng });
+        } catch (error) {
+          console.log(error);
+        }
+      }}
+    >
       <ComboboxInput
-       value={value} 
-       onChange={(e) => {
-        setValue(e.target.value) }}
-       disabled={!ready}
-       placeholder="Nairobi, Kenya"
-       className='form-control lacation-input'
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+        disabled={!ready}
+        placeholder='Nairobi, Kenya'
+        className='form-control lacation-input'
       />
       <ComboboxPopover>
         <ComboboxList>
-          {status === "OK" &&
+          {status === 'OK' &&
             data.map(({ place_id, description }) => (
               <ComboboxOption key={place_id} value={description} />
             ))}
         </ComboboxList>
       </ComboboxPopover>
     </Combobox>
-  )
-}
+  );
+};
 
 export default MapContainer;
