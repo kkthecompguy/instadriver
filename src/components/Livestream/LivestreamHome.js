@@ -82,12 +82,12 @@ const LivestreamHome = () => {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  <div className={leftOveralColumns}>
+                  <div className='col-sm-12 col-md-6 col-lg-6'>
                     <Fade cascade direction={'right'}>
                       <LivestreamSearchResult pastStream={pastStream} />
                     </Fade>
                   </div>
-                  <div className={rightOveralColumns}>
+                  <div className='col-sm-12 col-md-6 col-lg-6'>
                     <div className='row width-100'>
                       <div className='col-sm-12 col-md-10 col-lg-10 mx-auto'>
                         <Fade cascade direction={'left'}>

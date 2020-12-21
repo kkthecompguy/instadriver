@@ -1,5 +1,5 @@
 import React from 'react';
-import Player from './Player';
+// import Player from './Player';
 
 const LivestreamMoreSection = () => {
   const playlist = [
@@ -20,8 +20,8 @@ const LivestreamMoreSection = () => {
       <div className='row'>
         {playlist.map((music, index) => (
           <div key={index} className='col-md-6 mx-auto'>
-            <div className='card card-body'>
-              <Player moreUrl={music.url} width={'200px'} height={'200px'} />
+            <div className='card'>
+              <video src={music.url} className="more-video" ></video>
               <div className='more-player-wrapper'>
                 <span className='live-red'>LIVE</span>
                 <span>

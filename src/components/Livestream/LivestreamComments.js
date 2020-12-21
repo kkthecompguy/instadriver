@@ -39,7 +39,7 @@ const LivestreamComments = () => {
     setChosenEmoji(emojiObject);
   };
 
-  let newComment = '';
+  let newComment = comment;
 
   if(chosenEmoji) {
     newComment = comment + chosenEmoji.emoji;

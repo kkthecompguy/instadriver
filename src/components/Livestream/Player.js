@@ -34,7 +34,7 @@ const Player = ({
   let url = moreUrl === undefined ? curStream : moreUrl;
 
   const styles = {
-    borderRadius: '8px',
+    borderRadius: '12px',
   };
 
   const config = {
