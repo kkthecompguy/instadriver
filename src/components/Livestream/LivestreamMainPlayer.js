@@ -10,11 +10,24 @@ const LivestreamMainPlayer = ({
   goBack,
   search,
   pastStream,
+  triggerPopUp
 }) => {
   const [showEllipseDiv, setShowEllipseDiv] = useState(false);
   const [streamEnded, setStreamEnded] = useState(false);
   const [paused, setPaused] = useState(true);
   const [muted, setMuted] = useState(false);
+  const [like, setLike] = useState(false);
+
+  const likeVideo = () => {
+    setLike(!like);
+    if (like) {
+      document.getElementById('heart').style.color = 'red'
+    } else {
+      document.getElementById('heart').style.color = '#fff'
+    }
+  }
+
+  let isAuthenticated = false;
 
   return (
     <React.Fragment>
@@ -63,9 +76,15 @@ const LivestreamMainPlayer = ({
                 <i className='fas fa-volume-up'></i>
               )}
             </span>
-            <span onClick={() => console.log('liked...')}>
+            { isAuthenticated ? (
+              <span id="heart" onClick={() => likeVideo()}>
               <i className='fas fa-heart'></i>
             </span>
+            ) : (
+              <span id="heart" onClick={() => triggerPopUp()}>
+              <i className='fas fa-heart'></i>
+            </span>
+            ) }
             <span onClick={() => setShowEllipseDiv(!showEllipseDiv)}>
               <i className='fas fa-ellipsis-v'></i>
             </span>
@@ -78,6 +97,8 @@ const LivestreamMainPlayer = ({
               showChat={showChat}
               toggleSereneMode={toggleSereneMode}
               sereneMode={sereneMode}
+              isAuthenticated={isAuthenticated}
+              triggerPopUp={triggerPopUp}
             />
           )}
         </div>

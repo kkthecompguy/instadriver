@@ -710,6 +710,10 @@ img {
 }
 
 /* Livestream section */
+.livestream-relative {
+  position: relative;
+}
+
 .no-livestream {
   padding: 8rem 4rem;
   text-align: center;
@@ -989,19 +993,19 @@ img {
   border: none;
 }
 
-/* .heart {
-  width: 100px;
+/* .livestream-player-section .heart {
+  width: 10px;
   height: 100px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
-  background-position: 0 0;
+  background-position: center;
   cursor: pointer;
   animation: fave-heart 1s steps(28);
 }
-.heart:hover {
+.livestream-player-section .heart:hover {
   background-position: -2800px 0;
   transition: background 1s steps(28);
 }
@@ -1218,6 +1222,70 @@ img {
   font-size: 12px;
 }
 
+.register-popup {
+  position: absolute;
+  top: 100px;
+  left: 300px;
+  width: 500px;
+  height: 400px;
+  background-color: #3b3b3b;
+  color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  z-index: 1001;
+}
+
+.register-popup .btn-x {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.register-popup .btn-x span {
+  background-color: #ffbb00;
+  padding: 10px 17px;
+  color: #3b3b3b;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.register-popup .register-msg {
+  padding: 10px;
+}
+
+.register-popup ul {
+  list-style: none;
+}
+
+.register-popup ul li {
+  padding: 0.2rem .7rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.register-popup .register-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.register-popup .register-links a {
+  padding: .4rem .6rem;
+  margin-top: 1rem;
+  font-size: 15px;
+  background-color: #fff;
+  color: #3b3b3b;
+  width: 70%;
+  font-weight: 600;
+}
+
+
+
+
 
 
 
@@ -1246,6 +1314,11 @@ img {
   .info-btn button {
     font-size: 0.4rem;
     padding: 0.4rem;
+  }
+  .register-popup {
+    top: 100px;
+    left: 120px;
+    padding: .2rem;
   }
 }
 
@@ -1308,4 +1381,36 @@ img {
   .livestream-next-prev .previous-stream {
     margin-left: 0;
   }
+  .register-popup {
+    top: 1400px;
+    left: 20px;
+    width: 250px;
+    height: 210px;
+    padding: .2rem;
+  }
+  .register-popup .btn-x span {
+    padding: 5px 8px;
+    font-size: 10px;
+    font-weight: bolder;
+  }
+  .register-popup .register-msg {
+    padding: 2px;
+    font-size: 10px;
+  }
+  .register-popup ul li {
+    margin: 0;
+    padding: 0 2px;
+    font-size: 9px;
+  }
+  .register-popup .register-links {
+    padding: 0;
+  }
+  .register-popup .register-links a {
+    padding: 0;
+    margin-top: 8px;
+    font-size: 10px;
+    width: 70%;
+    font-weight: 600;
+  }
+  
 }

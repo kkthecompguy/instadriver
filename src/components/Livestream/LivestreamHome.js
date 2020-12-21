@@ -6,12 +6,14 @@ import LivestreamMoreSection from './LivestreamMoreSection';
 import LivestreamMainPlayer from './LivestreamMainPlayer';
 import LivestreamComments from './LivestreamComments';
 import LivestreamSearchResult from './LivestreamSeachResult';
+import RegisterPopUp from './RegisterPopup';
+
 
 const LivestreamHome = () => {
   const [search, setSearch] = useState(null);
   const [showChat, setShowChat] = useState(true);
   const [sereneMode, setSereneMode] = useState(false);
-  const [pastStream, setPastStream] = useState(false);
+  const [pastStream, setPastStream] = useState(false);const [showPopUp, setShowPopUp] = useState(false);
   const livestream = true;
 
   const toggleChatDiv = () => setShowChat(!showChat);
@@ -28,6 +30,13 @@ const LivestreamHome = () => {
     setSereneMode(false);
     setPastStream(false);
   };
+  const triggerPopUp = () => {
+    setShowPopUp(true)
+  }
+
+  const closePopUp = () => {
+    setShowPopUp(false);
+  }
 
   let leftOveralColumns =
     search && search !== ''
@@ -39,7 +48,7 @@ const LivestreamHome = () => {
       : 'col-sm-12 col-md-4 col-lg-4';
 
   return (
-    <div className='container'>
+    <div className='container livestream-relative'>
       <LivestreamHeader getSearchInput={getSearchInput} />
       {livestream ? (
         <div className='row livestream-body'>
@@ -68,6 +77,7 @@ const LivestreamHome = () => {
                           toggleSereneMode={toggleSereneMode}
                           sereneMode={sereneMode}
                           goBack={goBack}
+                          triggerPopUp={triggerPopUp}
                         />
                       </div>
                     </div>
@@ -99,6 +109,7 @@ const LivestreamHome = () => {
                             toggleSereneMode={toggleSereneMode}
                             sereneMode={sereneMode}
                             goBack={goBack}
+                            triggerPopUp={triggerPopUp}
                           />
                         </Fade>
                       </div>
@@ -121,6 +132,7 @@ const LivestreamHome = () => {
                         toggleSereneMode={toggleSereneMode}
                         sereneMode={sereneMode}
                         goBack={goBack}
+                        triggerPopUp={triggerPopUp}
                       />
                     </Fade>
                   </div>
@@ -142,6 +154,7 @@ const LivestreamHome = () => {
           </div>
         </div>
       )}
+      { showPopUp && <RegisterPopUp closePopUp={closePopUp} />}
     </div>
   );
 };
