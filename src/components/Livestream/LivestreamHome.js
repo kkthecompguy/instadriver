@@ -8,12 +8,12 @@ import LivestreamComments from './LivestreamComments';
 import LivestreamSearchResult from './LivestreamSeachResult';
 import RegisterPopUp from './RegisterPopup';
 
-
 const LivestreamHome = () => {
   const [search, setSearch] = useState(null);
   const [showChat, setShowChat] = useState(true);
   const [sereneMode, setSereneMode] = useState(false);
-  const [pastStream, setPastStream] = useState(false);const [showPopUp, setShowPopUp] = useState(false);
+  const [pastStream, setPastStream] = useState(false);
+  const [showPopUp, setShowPopUp] = useState(false);
   const livestream = true;
 
   const toggleChatDiv = () => setShowChat(!showChat);
@@ -31,20 +31,26 @@ const LivestreamHome = () => {
     setPastStream(false);
   };
   const triggerPopUp = () => {
-    setShowPopUp(true)
-  }
+    setShowPopUp(true);
+  };
 
   const closePopUp = () => {
     setShowPopUp(false);
+  };
+
+  const currPlayingVideo = (videoId, url) => {
+    // console.log(videoId, url);
+    // localStorage.setItem('currPlay', JSON.stringify({videoId, url}));
+    return {videoId, url};
   }
 
   let leftOveralColumns =
     search && search !== ''
-      ? 'col-sm-12 col-md-6 col-lg-6'
+      ? 'col-sm-12 col-md-5 col-lg-5'
       : 'col-sm-12 col-md-8 col-lg-8';
   let rightOveralColumns =
     search && search !== ''
-      ? 'col-sm-12 col-md-6 col-lg-6'
+      ? 'col-sm-12 col-md-7 col-lg-7'
       : 'col-sm-12 col-md-4 col-lg-4';
 
   return (
@@ -64,7 +70,7 @@ const LivestreamHome = () => {
                             <LivestreamUserSection
                               viewPastStream={viewPastStream}
                             />
-                            <LivestreamMoreSection />
+                            <LivestreamMoreSection currPlayingVideo={currPlayingVideo} />
                           </React.Fragment>
                         )}
                       </div>
@@ -78,6 +84,7 @@ const LivestreamHome = () => {
                           sereneMode={sereneMode}
                           goBack={goBack}
                           triggerPopUp={triggerPopUp}
+                          currPlayingVideo={currPlayingVideo}
                         />
                       </div>
                     </div>
@@ -92,27 +99,26 @@ const LivestreamHome = () => {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  <div className='col-sm-12 col-md-6 col-lg-6'>
+                  <div className='col-sm-12 col-md-7 col-lg-7'>
                     <Fade cascade direction={'right'}>
-                      <LivestreamSearchResult pastStream={pastStream} />
+                      <LivestreamSearchResult pastStream={pastStream} currPlayingVideo={currPlayingVideo} />
                     </Fade>
                   </div>
-                  <div className='col-sm-12 col-md-6 col-lg-6'>
-                    <div className='row width-100'>
-                      <div className='col-sm-12 col-md-10 col-lg-10 mx-auto'>
-                        <Fade cascade direction={'left'}>
-                          <LivestreamMainPlayer
-                            toggleChatDiv={toggleChatDiv}
-                            showChat={showChat}
-                            search={search}
-                            pastStream={pastStream}
-                            toggleSereneMode={toggleSereneMode}
-                            sereneMode={sereneMode}
-                            goBack={goBack}
-                            triggerPopUp={triggerPopUp}
-                          />
-                        </Fade>
-                      </div>
+                  <div className='col-sm-12 col-md-5 col-lg-5 mx-auto'>
+                    <div className='py-5 px-5'>
+                      <Fade cascade direction={'left'}>
+                        <LivestreamMainPlayer
+                          toggleChatDiv={toggleChatDiv}
+                          showChat={showChat}
+                          search={search}
+                          pastStream={pastStream}
+                          toggleSereneMode={toggleSereneMode}
+                          sereneMode={sereneMode}
+                          goBack={goBack}
+                          triggerPopUp={triggerPopUp}
+                          currPlayingVideo={currPlayingVideo}
+                        />
+                      </Fade>
                     </div>
                   </div>
                 </React.Fragment>
@@ -121,26 +127,25 @@ const LivestreamHome = () => {
           ) : (
             <React.Fragment>
               <div className={leftOveralColumns}>
-                <div className='row width-100'>
-                  <div className='col-sm-12 col-md-10 col-lg-10 mx-auto'>
-                    <Fade cascade direction={'left'}>
-                      <LivestreamMainPlayer
-                        toggleChatDiv={toggleChatDiv}
-                        showChat={showChat}
-                        search={search}
-                        pastStream={pastStream}
-                        toggleSereneMode={toggleSereneMode}
-                        sereneMode={sereneMode}
-                        goBack={goBack}
-                        triggerPopUp={triggerPopUp}
-                      />
-                    </Fade>
-                  </div>
+                <div className='py-5 px-5'>
+                  <Fade cascade direction={'left'}>
+                    <LivestreamMainPlayer
+                      toggleChatDiv={toggleChatDiv}
+                      showChat={showChat}
+                      search={search}
+                      pastStream={pastStream}
+                      toggleSereneMode={toggleSereneMode}
+                      sereneMode={sereneMode}
+                      goBack={goBack}
+                      triggerPopUp={triggerPopUp}
+                      currPlayingVideo={currPlayingVideo}
+                    />
+                  </Fade>
                 </div>
               </div>
               <div className={rightOveralColumns}>
                 <Fade cascade direction={'right'}>
-                  <LivestreamSearchResult />
+                  <LivestreamSearchResult currentPlayingVideo={currPlayingVideo} />
                 </Fade>
               </div>
             </React.Fragment>
@@ -154,7 +159,7 @@ const LivestreamHome = () => {
           </div>
         </div>
       )}
-      { showPopUp && <RegisterPopUp closePopUp={closePopUp} />}
+      {showPopUp && <RegisterPopUp closePopUp={closePopUp} />}
     </div>
   );
 };

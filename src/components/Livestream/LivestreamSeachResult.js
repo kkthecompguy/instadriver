@@ -1,38 +1,11 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeVideo } from '../../actions/videos';
 
 const LivestreamSearchResult = ({ pastStream }) => {
-  const playlist = [
-    {
-      id: new Date().getSeconds(),
-      url:
-        'https://player.vimeo.com/external/458885655.sd.mp4?s=429a8b79b990daea261bf6ef6ef8f85472e343cd&profile_id=165&oauth2_token_id=57447761',
-    },
-    {
-      id: new Date().getSeconds(),
-      url:
-        'https://player.vimeo.com/external/428012688.sd.mp4?s=21be0a848f00a5210af73d738a773e9f4414ba4a&profile_id=165&oauth2_token_id=57447761',
-    },
-    {
-      id: new Date().getSeconds(),
-      url:
-        'https://player.vimeo.com/external/458885655.sd.mp4?s=429a8b79b990daea261bf6ef6ef8f85472e343cd&profile_id=165&oauth2_token_id=57447761',
-    },
-    {
-      id: new Date().getSeconds(),
-      url:
-        'https://player.vimeo.com/external/428012688.sd.mp4?s=21be0a848f00a5210af73d738a773e9f4414ba4a&profile_id=165&oauth2_token_id=57447761',
-    },
-    {
-      id: new Date().getSeconds(),
-      url:
-        'https://player.vimeo.com/external/458885655.sd.mp4?s=429a8b79b990daea261bf6ef6ef8f85472e343cd&profile_id=165&oauth2_token_id=57447761',
-    },
-    {
-      id: new Date().getSeconds(),
-      url:
-        'https://player.vimeo.com/external/428012688.sd.mp4?s=21be0a848f00a5210af73d738a773e9f4414ba4a&profile_id=165&oauth2_token_id=57447761',
-    },
-  ]; 
+  const { videos } = useSelector(state => state.videos);
+  const dispatch = useDispatch();
+
   return (
     <div className='livestream-search-result'>
       <h4 className='result-header'>
@@ -40,11 +13,11 @@ const LivestreamSearchResult = ({ pastStream }) => {
           ? 'Past Streams By Jonn Doe @JohndoeD'
           : 'Your Search Results For Instadriver Livestream'}
       </h4>
-      { playlist.map((music, index) => (
+      { videos.map((video, index) => (
         <div key={index} className='row width-100 mt-3'>
           <div className='col-md-6'>
             <div className='card-player'>
-              <video src={music.url} className="search-videos"></video>
+              <video src={video.url} className="search-videos" onClick={() => dispatch(changeVideo(video.id, video.url))}></video>
             </div>
           </div>
           <div className='col-md-6'>

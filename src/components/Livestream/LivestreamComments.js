@@ -33,26 +33,23 @@ const LivestreamComments = () => {
   const [comment, setComment] = useState('');
   ;
   const [chosenEmoji, setChosenEmoji] = useState(null);
-  const [showEmojis, setShowEmojis] = useState(false)
+  const [showEmojis, setShowEmojis] = useState(false);
 
   const onEmojiClick = (event, emojiObject) => {
     setChosenEmoji(emojiObject);
+    if(chosenEmoji) {
+      setComment(comment + chosenEmoji.emoji);
+    }
   };
 
-  let newComment = comment;
-
-  if(chosenEmoji) {
-    newComment = comment + chosenEmoji.emoji;
-  }
-
   const handleClick = () => {
-    if (comment !== '' || newComment !== '') {
+    if (comment !== '') {
       const message = {
         id: new Date().getSeconds(),
         author: 'John Doe',
         username: '@JohntheD',
         time: '5h',
-        comment: newComment,
+        comment: comment,
         avatar: 'https://images.unsplash.com/photo-1608093602525-45b7d7b320e0?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60'
       }
       setMessages(current => [...current, message]);

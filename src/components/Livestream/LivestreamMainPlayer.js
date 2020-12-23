@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Player from './Player';
 import EllipsePopUp from './EllipsePopUp';
+import Reward from 'react-rewards';
 
 const LivestreamMainPlayer = ({
   toggleChatDiv,
@@ -10,7 +11,8 @@ const LivestreamMainPlayer = ({
   goBack,
   search,
   pastStream,
-  triggerPopUp
+  triggerPopUp,
+  currPlayingVideo
 }) => {
   const [showEllipseDiv, setShowEllipseDiv] = useState(false);
   const [streamEnded, setStreamEnded] = useState(false);
@@ -18,13 +20,19 @@ const LivestreamMainPlayer = ({
   const [muted, setMuted] = useState(false);
   const [like, setLike] = useState(false);
 
+  let reward = React.createRef();
   const likeVideo = () => {
     setLike(!like);
     if (like) {
+      reward.rewardMe();
       document.getElementById('heart').style.color = 'red'
     } else {
       document.getElementById('heart').style.color = '#fff'
     }
+  }
+
+  const closeEllipse = () => {
+    setShowEllipseDiv(false);
   }
 
   let isAuthenticated = false;
@@ -47,6 +55,7 @@ const LivestreamMainPlayer = ({
           muted={muted}
           pip={true}
           stopOnUnmount={false}
+          currPlayingVideo={currPlayingVideo}
         />
         <div className='livestream-player-actions'>
           <div className='player-wrapper'>
@@ -77,8 +86,10 @@ const LivestreamMainPlayer = ({
               )}
             </span>
             { isAuthenticated ? (
-              <span id="heart" onClick={() => likeVideo()}>
-              <i className='fas fa-heart'></i>
+              <span id="heart">
+                <Reward ref={(ref) => reward = ref} type='confetti'>
+                  <i className='fas fa-heart' onClick={() => likeVideo()}></i>
+                </Reward>
             </span>
             ) : (
               <span id="heart" onClick={() => triggerPopUp()}>
@@ -99,12 +110,13 @@ const LivestreamMainPlayer = ({
               sereneMode={sereneMode}
               isAuthenticated={isAuthenticated}
               triggerPopUp={triggerPopUp}
+              closeEllipse={closeEllipse}
             />
           )}
         </div>
         {search || pastStream ? (
           <div className='livestream-return-button'>
-            <div className='return-button'>
+            <div className={search ? 'return-button-right': 'return-button-left'}>
               <button onClick={() => goBack()}>
                 Return
                 <i className='fas fa-arrow-circle-left'></i>

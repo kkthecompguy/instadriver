@@ -13,13 +13,13 @@ const LivestreamUserSection = ({ viewPastStream }) => {
       </div>
       <div className='livestream-user-counts'>
         <div className='row'>
-          <div className='col-md-6 flex-horizontal'>
+          <div className='col-md-6 flex-horizontal px-0'>
             <div className='flex-horizontal'>
               <i className='fas fa-users'></i> <span>Connections</span>
             </div>
             <span className='badge badge-pill badge-dark'>23</span>
           </div>
-          <div className='col-md-6 flex-horizontal'>
+          <div className='col-md-6 flex-horizontal px-0'>
             <div className='flex-horizontal'>
               <i className='fas fa-user-friends'></i> <span>Following</span>
             </div>
@@ -27,13 +27,13 @@ const LivestreamUserSection = ({ viewPastStream }) => {
           </div>
         </div>
         <div className='row'>
-          <div className='col-md-6 flex-horizontal'>
+          <div className='col-md-6 flex-horizontal px-0'>
             <div className='flex-horizontal'>
               <i className='fas fa-user-friends'></i> <span>Followers</span>
             </div>
             <span className='badge badge-pill badge-secondary'>23</span>
           </div>
-          <div className='col-md-6 flex-horizontal'>
+          <div className='col-md-6 flex-horizontal px-0'>
             <div className='flex-horizontal'>
               <i className='fas fa-users'></i> <span>Groups Joined</span>
             </div>
