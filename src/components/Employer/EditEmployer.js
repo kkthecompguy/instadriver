@@ -2,15 +2,6 @@ import React, { useState } from 'react';
 import MapContainer from '../MapComp/Map';
 
 const EditEmployer = () => {
-  // const [ businessName, setBusinessName ] = useState('');
-  // const [ instahandler, setInstahandler ] = useState('');
-  // const [ website, setWebsite ] = useState('');
-  // const [ tageline, setTagline ] = useState('');
-  // const [ businessAbout, setBusinessAbout ] = useState('');
-  // const [ location, setLocation ] = useState('');
-  // const [ phoneNumber, setPhoneNumber ] = useState('');
-  // const [ emailAddress, setEmailAdress ] = useState('');
-  // const [ makeVisible, setMakeVisible ] = useState('');
   const [formData, setFormData] = useState({
     businessName: '',
     instahandler: '',
@@ -45,25 +36,6 @@ const EditEmployer = () => {
 
   return (
     <div className='container'>
-      {/* <div className='row'>
-        <div className='col-sm-12 col-md-12 col-lg-12'>
-          <div className='cover-image'>
-            <img src='' alt='BackgroudImage' />
-            <div>
-              <i className='fas fa-pencil-alt'></i>
-            </div>
-          </div>
-          <div className='profile-button-area'>
-            <div>
-              <button>Exmployer X</button>
-              <button>Exmployer X</button>
-            </div>
-            <div>
-              <img src='' alt='profile-pic' />
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div className='row'>
         <div className='col-sm-12 col-md-8 col-lg-7 mx-auto'>
           <div className='business-name py-4'>

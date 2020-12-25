@@ -35,7 +35,12 @@ const LivestreamMainPlayer = ({
     setShowEllipseDiv(false);
   }
 
-  let isAuthenticated = false;
+  let isAuthenticated = true;
+
+  const config = {
+    angle: 90,
+    emoji: ['❤', '💚']
+  }
 
   return (
     <React.Fragment>
@@ -87,7 +92,7 @@ const LivestreamMainPlayer = ({
             </span>
             { isAuthenticated ? (
               <span id="heart">
-                <Reward ref={(ref) => reward = ref} type='confetti'>
+                <Reward ref={(ref) => reward = ref} type='emoji' config={config}>
                   <i className='fas fa-heart' onClick={() => likeVideo()}></i>
                 </Reward>
             </span>

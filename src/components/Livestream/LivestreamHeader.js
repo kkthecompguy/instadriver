@@ -1,7 +1,7 @@
 import React from 'react';
 import LivestreamSearch from './LivestreamSearch';
 
-const LivestreamHeader = ({ getSearchInput }) => {
+const LivestreamHeader = ({ getSearchInput, setLivestreamCreate }) => {
   return (
     <div className='row livestream-header'>
       <div className='col-sm-12 col-md-8 col-lg-8 livestream-section1'>
@@ -37,7 +37,7 @@ const LivestreamHeader = ({ getSearchInput }) => {
         </div>
       </div>
       <div className='col-sm-12 col-md-4 col-lg-4'>
-        <LivestreamSearch getSearchInput={getSearchInput} />
+        <LivestreamSearch getSearchInput={getSearchInput} setLivestreamCreate={setLivestreamCreate} />
       </div>
     </div>
   );

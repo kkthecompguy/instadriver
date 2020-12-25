@@ -142,6 +142,10 @@ img {
   border-radius: 20px;
 }
 
+.has-search input:focus {
+  outline-style: none;
+}
+
 /* FFBB00 */
 
 .has-search .form-control-feedback {
@@ -769,6 +773,25 @@ img {
   color: #ffbb00;
 }
 
+.livestream-create {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.livestream-create button {
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #ffbb00;
+  font-weight: 1000;
+  padding: 7px 5px;
+}
+
+.livestream-create span i {
+  font-size: 18px;
+}
+
 .livestream-body {
   width: 100%;
   padding-top: 2rem;
@@ -1038,9 +1061,14 @@ img {
   line-height: 25.2px;
 }
 
+.livestream-poster .stretch-less {
+  width: 70%;
+}
+
 .livestream-message-area {
   border-radius: 8px;
   border: 1px solid #d7d5d5;
+  background: #fff;
 }
 
 .livestream-message-area .livestream-message-inbox {
@@ -1132,6 +1160,9 @@ img {
   width: 90%;
   padding: 0.8rem;
   border-top-left-radius: 10px;
+}
+.livestream-message-area .custom-input-live:focus {
+  outline-style: none;
 }
 
 .livestream-message-area .livestream-text-input span i {
@@ -1271,6 +1302,211 @@ img {
   font-weight: 600;
 }
 
+/* when livestream when user is logged in */
+.livestream-navigator {
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #5b5b5b;
+}
+
+.livestream-navigator .wantsto,
+.livestream-navigator .agreeto  {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.livestream-navigator .stream-access {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+.livestream-navigator .stream-access .use-mic,
+.livestream-navigator .stream-access .use-cam {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.livestream-navigator .stream-access .use-mic button,
+.livestream-navigator .stream-access .use-cam button,
+.livestream-navigator .actions button{
+  border: none;
+  padding: .5rem 2rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  background-color: #e5e5e5;
+  font-weight: 600;
+  color: #5b5b5b;
+}
+
+.livestream-navigator .stream-access .use-mic i,
+.livestream-navigator .stream-access .use-cam i {
+  margin-top: .8rem;
+  font-size: 2rem;
+}
+
+.livestream-navigator .warning p {
+  padding: 1rem;
+  margin-top: 10px;
+}
+
+.livestream-navigator .actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.bg-cyan {
+  background: #EDF5FA;
+  width: 100%;
+}
+
+.livestream-setup .intro {
+  padding: 1rem 3rem;
+  color: #5B5B5B;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.livestream-setup .stream-to-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.livestream-setup .stream-to-row .helper-text h4,
+.livestream-setup .description h5{
+  font-size: 15px;
+  color: #5B5B5B;
+  font-weight: 600;
+}
+
+.livestream-setup .stream-to-row .helper-text p,
+.livestream-setup .description p {
+  font-size: 10px;
+  color: #969393;
+}
+
+.livestream-setup .description {
+  padding-left: 2rem;
+}
+
+.livestream-setup .description p {
+  margin: 0;
+  font-size: 11px;
+}
+
+.livestream-setup .description input, 
+.livestream-setup .description textarea{
+  background-color: #EDF5FA;
+  font-size: 14px;
+}
+
+.livestream-setup .description .bg-gray{
+  background-color: #fafafa !important;
+}
+
+.livestream-setup .description span {
+  float: right;
+}
+
+.livestream-setup .description textarea {
+  height: 99.83px;
+}
+
+.livestream-setup .user-video-img {
+  width: 100%;
+  height: 540px;
+  object-fit: cover;
+}
+
+.livestream-setup .start-livestream {
+  background: #F61414;
+  color: #fff;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  width: 40%;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.livestream-setup .start-livestream:focus {
+  outline: none;
+}
+
+.livestream-setup .video-wrapper {
+  position: relative;
+}
+
+.livestream-setup .video-wrapper span {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #F61414;
+  color: #fff;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.livestream-setup .user-live {
+  position: relative;
+}
+
+.livestream-setup .end-livestream {
+  position: absolute;
+  top: 100px;
+  left: 400px;
+  width: 400px;
+  height: 200px;
+  background-color: #fff;
+  border: .5px solid #5b5b5b;
+  border-radius: 5px;
+}
+
+.livestream-setup .end-livestream .title{
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 1rem;
+  color: #5B5B5B;
+}
+
+.livestream-setup .end-livestream .warning {
+  padding: 1.5rem 15px;
+  font-size: 14px;
+  color: #5b5b5b;
+  text-align: center;
+}
+
+.livestream-setup .end-livestream .actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.livestream-setup .end-livestream .actions button {
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #5B5B5B;
+  padding: 5px 10px;
+  background-color: #e5e5e5;
+}
+
+.livestream-setup .end-livestream .actions button:focus {
+  outline-style: none;
+}
+
+
 
 
 
@@ -1308,6 +1544,10 @@ img {
     left: 120px;
     padding: .2rem;
   }
+  .livestream-setup .end-livestream {
+    top: 100px;
+    left: 240px;
+  }
 }
 
 @media (max-width: 538px) {
@@ -1330,6 +1570,10 @@ img {
   }
   .sidebar {
     display: none;
+  }
+  .livestream-setup .end-livestream {
+    top: 680px;
+    left: 30px;
   }
 }
 
@@ -1403,5 +1647,9 @@ img {
   #padd-5x {
     padding: 0 !important;
   }
-  
+  .livestream-setup .end-livestream {
+    top: 680px;
+    left: 20px;
+    width: 350px;
+  }
 }
