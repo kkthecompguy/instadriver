@@ -6,8 +6,8 @@ import EndLivestreamPopUp from './EndLivestreamPopUp';
 
 const LivestreamLive = () => {
   const [formData, setFormData] = useState({
-    streamTo: '',
-    useCustom: '',
+    streamTo: 'streamToWorld',
+    useCustom: 'customDescription',
     title: '',
     description: '',
     cusTitle: 'Check Out This Stream!',
@@ -179,13 +179,13 @@ const LivestreamLive = () => {
                         </div>
                       )}
                     </div>
-                    <button className="start-livestream" onClick={() => setLivestreamStarted(true)}>Start Livestream</button>
+                    <button className="start-livestream" onClick={() => {setLivestreamStarted(true);}}>Start Livestream</button>
                   </div>
                   <div className="col-sm-12 col-md-7 col-7">
-                    {/* <div className="embed-responsive embed-responsive-4by3">
-                      <video src="https://player.vimeo.com/external/458870654.sd.mp4?s=916cda2ca52f2a77d377f13c2d05cd749c890190&profile_id=165&oauth2_token_id=57447761" className="embed-responsive-item"></video>
-                    </div> */}
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGmGer2c3BRJYIP4rPXPBA61-6qyMUozZDHA&usqp=CAU" alt="UserImage" className="user-video-img"/>
+                  <div className="video-wrapper">
+                    <img src="/images/Rectangle 383.png" alt="UserImage" className="user-video-img"/>
+                  </div>
+                    {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGmGer2c3BRJYIP4rPXPBA61-6qyMUozZDHA&usqp=CAU" alt="UserImage" className="user-video-img"/> */}
                   </div>
                 </div>
               </React.Fragment>
@@ -197,7 +197,7 @@ const LivestreamLive = () => {
                 </div>
                 <div className="col-sm-12 col-md-7 col-lg-7">
                   <div className="video-wrapper">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGmGer2c3BRJYIP4rPXPBA61-6qyMUozZDHA&usqp=CAU" alt="UserImage" className="user-video-img"/>
+                    <img src="/images/Rectangle 383.png" alt="UserImage" className="user-video-img"/>
                     <span>LIVE</span>
                   </div>
                   <div className='livestream-poster'>

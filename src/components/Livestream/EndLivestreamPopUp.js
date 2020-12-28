@@ -19,7 +19,7 @@ const EndLivestreamPopUp = ({ closePopUp }) => {
       <div className="title">Are You Sure About This!</div>
       <div className="warning">This action will end your livestream. Are you sure you want to end the livestream?</div>
       <div className="actions">
-        <button onClick={() => console.log('Livestream ended!')}>End Livestream</button>
+        <button onClick={() => console.log('stream ended')}>End Livestream</button>
         <button onClick={() => closePopUp()}>Cancel</button>
       </div>
     </div>

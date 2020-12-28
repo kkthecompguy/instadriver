@@ -11,7 +11,7 @@ const EditEmployer = () => {
     location: '',
     phoneNumber: '',
     emailAddress: '',
-    visibility: '',
+    visibility: 'makeVisible',
   });
 
   const {

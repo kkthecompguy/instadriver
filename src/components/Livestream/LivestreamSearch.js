@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const LivestreamSearch = ({ getSearchInput, setLivestreamCreate }) => {
+const LivestreamSearch = ({ getSearchInput }) => {
   const [search, setSearch] = useState('');
 
   const handleChange = e => {
@@ -30,7 +31,7 @@ const LivestreamSearch = ({ getSearchInput, setLivestreamCreate }) => {
       </div>
       <div className="col-sm-12 col-md-6 col-lg-6">
         <div className="livestream-create">
-          <button onClick={() => setLivestreamCreate(true)}>Create Livestream</button>
+          <Link to="/livestream-live-create" className="btn-create">Create Livestream</Link>
           <span><i className="fas fa-chevron-down"></i></span>
         </div>
       </div>
